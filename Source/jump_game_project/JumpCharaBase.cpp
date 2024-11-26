@@ -26,9 +26,4 @@ void AJumpCharaBase::Tick(float DeltaTime)
 }
 
 // Called to bind functionality to input
-void AJumpCharaBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
 
