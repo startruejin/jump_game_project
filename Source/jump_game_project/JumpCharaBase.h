@@ -14,12 +14,21 @@ class JUMP_GAME_PROJECT_API AJumpCharaBase : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AJumpCharaBase();
+	UPROPERTY(VisibleAnywhere, Category = Camera)
+	class USpringArmComponent* springArmComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	class UCameraComponent* tpsCamComp;
 	
 
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UPROPERTY(VisibleAnywhere)
+	class USpringArmComponent* SpringArm;
+
+	UPROPERTY(VisibleAnywhere)
+	class UCameraComponent* Camera;	
 
 
 public:	
