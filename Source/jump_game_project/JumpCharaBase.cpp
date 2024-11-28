@@ -11,6 +11,16 @@
 // Sets default values
 AJumpCharaBase::AJumpCharaBase()
 {
+
+	bUseControllerRotationPitch =false;
+	bUseControllerRotationRoll = false;
+	bUseControllerRotationYaw = false;
+	// Configure character movement
+	GetCharacterMovement()->RotationRate = FRotator(0.f, 720.f, 0.f);
+	GetCharacterMovement()->bConstrainToPlane = true;
+	GetCharacterMovement()->bSnapToPlaneAtStart = true;
+
+
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	ConstructorHelpers::FObjectFinder<USkeletalMesh> tempMesh(TEXT("SkeletalMesh'/Content/Sport_Female/Mesh/SK_Sport_female'"));
@@ -26,8 +36,8 @@ AJumpCharaBase::AJumpCharaBase()
 	// 3-2. Camera 컴포넌트 붙이기
 	tpsCamComp = CreateDefaultSubobject<UCameraComponent>(TEXT("TpsCamComp"));
 	tpsCamComp->SetupAttachment(springArmComp);
-	tpsCamComp->bUsePawnControlRotation = false;
-	bUseControllerRotationYaw = true;
+	tpsCamComp->bUsePawnControlRotation = true;
+	
 
 
 

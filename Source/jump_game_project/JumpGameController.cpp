@@ -4,6 +4,11 @@
 #include "JumpGameController.h"
 #include "JumpCharaBase.h"
 #include "GameFramework/Character.h"
+#include "Components/InputComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "GameFramework/Pawn.h"
+#include "InputMappingContext.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
@@ -37,7 +42,7 @@ void AJumpGameController::SetupInputComponent()
 
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent))
 	{
-		EnhancedInputComponent->BindAction(MoveForwardAction, ETriggerEvent::Triggered, this, &AJumpGameController::MoveForward);
+		EnhancedInputComponent->BindAction(MoveFowardAction, ETriggerEvent::Triggered, this, &AJumpGameController::MoveForward);
 		EnhancedInputComponent->BindAction(MoveSideAction, ETriggerEvent::Triggered, this, &AJumpGameController::MoveSide);
 		EnhancedInputComponent->BindAction(MoveJumpAction, ETriggerEvent::Triggered,this, &AJumpGameController::MoveJump);
 	}
@@ -49,24 +54,30 @@ void AJumpGameController::SetupInputComponent()
 void AJumpGameController::MoveForward(const FInputActionValue& value)
 {
 	const float inputValue = value.Get<float>();
+	FVector Direction = UKismetMathLibrary::GetForwardVector(FRotator(0.0f, GetControlRotation().Yaw, 0.0f));
 
-	if (GetCharacter() != nullptr)
-		GetCharacter()->AddMovementInput(FVector::ForwardVector, inputValue);
+	if (GetCharacter() != nullptr) {
+		//GetCharacter()->AddMovementInput(FVector::ForwardVector, inputValue);
+		GetCharacter()->AddMovementInput(Direction,inputValue);
+	}
+
+	
+
 }
 
 void AJumpGameController::MoveSide(const FInputActionValue& value)
 {
+	FVector Direction = UKismetMathLibrary::GetRightVector(FRotator(0.0f, GetControlRotation().Yaw, 0.0f));
 	const float inputValue = value.Get<float>();
 
 	if (GetCharacter() != nullptr)
-		GetCharacter()->AddMovementInput(FVector::RightVector, inputValue);
+		//GetCharacter()->AddMovementInput(FVector::RightVector, inputValue);
+		GetCharacter()->AddMovementInput(Direction, inputValue);
 }
 
-void AJumpGameController::MoveJump(const FInputActionValue& value)
+void AJumpGameController::MoveJump()
 {
-	const float inputValue = value.Get<float>();
-
 	if (GetCharacter() != nullptr)
-		GetCharacter()->AddMovementInput(FVector::ZAxisVector, inputValue);
+		GetCharacter()->bPressedJump = true;
 }
 

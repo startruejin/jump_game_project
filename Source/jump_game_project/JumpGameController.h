@@ -25,7 +25,7 @@ public:
 	class UInputAction* MoveJumpAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
-	class UInputAction* MoveForwardAction;
+	class UInputAction* MoveFowardAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
 	class UInputAction* MoveSideAction;
@@ -37,7 +37,7 @@ protected:
 
 	void MoveForward(const FInputActionValue& value);
 	void MoveSide(const FInputActionValue& value);
-	void MoveJump(const FInputActionValue& value);
+	void MoveJump();
 
 private:
 	class AJumpCharaBase* controlledchar;
