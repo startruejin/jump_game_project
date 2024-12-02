@@ -25,7 +25,7 @@ public:
 	class UInputAction* MoveJumpAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
-	class UInputAction* MoveFowardAction;
+	class UInputAction* MoveForwardAction;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
 	class UInputAction* MoveSideAction;
@@ -35,8 +35,11 @@ protected:
 	virtual void OnPossess(APawn* InPawn) override;
 	virtual void SetupInputComponent() override;
 
+	UFUNCTION()
 	void MoveForward(const FInputActionValue& value);
+	UFUNCTION()
 	void MoveSide(const FInputActionValue& value);
+	UFUNCTION()
 	void MoveJump();
 
 private:

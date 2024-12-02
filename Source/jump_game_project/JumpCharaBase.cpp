@@ -16,9 +16,9 @@ AJumpCharaBase::AJumpCharaBase()
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
 	// Configure character movement
-	GetCharacterMovement()->RotationRate = FRotator(0.f, 720.f, 0.f);
-	GetCharacterMovement()->bConstrainToPlane = true;
-	GetCharacterMovement()->bSnapToPlaneAtStart = true;
+	//GetCharacterMovement()->RotationRate = FRotator(0.f, 720.f, 0.f);
+	//GetCharacterMovement()->bConstrainToPlane = true;
+	//GetCharacterMovement()->bSnapToPlaneAtStart = true;
 
 
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
