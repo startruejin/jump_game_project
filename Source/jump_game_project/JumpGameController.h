@@ -30,6 +30,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
 	class UInputAction* MoveSideAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
+	class UInputAction* CameraSide;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
+	class UInputAction* CameraUp;
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void OnPossess(APawn* InPawn) override;
@@ -41,6 +46,11 @@ protected:
 	void MoveSide(const FInputActionValue& value);
 	UFUNCTION()
 	void MoveJump();
+	UFUNCTION()
+	void MoveCameraSide(const FInputActionValue& value);
+	UFUNCTION()
+	void MoveCameraUp(const FInputActionValue& value);
+
 
 private:
 	class AJumpCharaBase* controlledchar;
