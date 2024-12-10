@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MoveingPlatform.h"
+#include "MovingPlatform_UpDown.h"
 #include "math.h"
 
 // Sets default values
-AMoveingPlatform::AMoveingPlatform()
+AMovingPlatform_UpDown::AMovingPlatform_UpDown()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -14,24 +14,23 @@ AMoveingPlatform::AMoveingPlatform()
 }
 
 // Called when the game starts or when spawned
-void AMoveingPlatform::BeginPlay()
+void AMovingPlatform_UpDown::BeginPlay()
 {
 	Super::BeginPlay();
-	MyVector.X = AMoveingPlatform::GetActorLocation().X;
-	MyVector.Y = AMoveingPlatform::GetActorLocation().Y;
-	MyVector.Z = AMoveingPlatform::GetActorLocation().Z;
+	MyVector.X = AMovingPlatform_UpDown::GetActorLocation().X;
+	MyVector.Y = AMovingPlatform_UpDown::GetActorLocation().Y;
+	MyVector.Z = AMovingPlatform_UpDown::GetActorLocation().Z;
 	speed = FMath::RandRange(1, 50);
 	direction = FMath::RandRange(-1, 1);
-
+	
 }
 
 // Called every frame
-void AMoveingPlatform::Tick(float DeltaTime)
+void AMovingPlatform_UpDown::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 	if (second < 10) {
-		MyVector.Y += direction*speed;
+		MyVector.Z+= direction * speed;
 		second++;
 	}
 	else {
