@@ -26,5 +26,7 @@ protected:
 	UPROPERTY()
 	int32 second;
 	UPROPERTY()
+	int32 interverl;
+	UPROPERTY()
 	int32 speed;
 };

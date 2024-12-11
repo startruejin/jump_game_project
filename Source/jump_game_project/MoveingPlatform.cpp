@@ -22,6 +22,7 @@ void AMoveingPlatform::BeginPlay()
 	MyVector.Z = AMoveingPlatform::GetActorLocation().Z;
 	speed = FMath::RandRange(1, 50);
 	direction = FMath::RandRange(-1, 1);
+	interverl = FMath::RandRange(10, 30);
 
 }
 
@@ -30,7 +31,7 @@ void AMoveingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (second < 10) {
+	if (second < interverl) {
 		MyVector.Y += direction*speed;
 		second++;
 	}

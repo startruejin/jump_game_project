@@ -22,6 +22,7 @@ void AMovingPlatform_UpDown::BeginPlay()
 	MyVector.Z = AMovingPlatform_UpDown::GetActorLocation().Z;
 	speed = FMath::RandRange(1, 50);
 	direction = FMath::RandRange(-1, 1);
+	interverl = FMath::RandRange(10, 30);
 	
 }
 
